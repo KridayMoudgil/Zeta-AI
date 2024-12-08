@@ -43,10 +43,6 @@ def say_response():
     user_input = entry_1.get()
     result = chain.invoke({"context": context, "question": user_input})
     response = str(result)
-    response_label.configure(state="normal")
-    response_label.insert(tk.END, f"Zeta: \n\n{response}\n\n")
-    response_label.configure(state="disabled")
-    response_label.yview(tk.END)
     engine.say(result)
     engine.runAndWait()
 
@@ -75,6 +71,10 @@ response_label = customtkinter.CTkTextbox(frame, wrap=tk.WORD, height=20, font=(
 response_label.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
 scrollbar.configure(command=response_label.yview)
+
+
+
+
 
 
 root.mainloop()
